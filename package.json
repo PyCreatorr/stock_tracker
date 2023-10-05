@@ -1,0 +1,9 @@
+{
+  "dependencies": {},
+  "name": "stock_tracker",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:PyCreatorr/stock_tracker.git",
+  "author": "PyCreatorr <ttptv@yahoo.com>",
+  "license": "MIT"
+}

@@ -72,3 +72,10 @@ group :test do
 end
 
 gem "devise", "~> 4.9"
+
+gem "tailwindcss-rails", "~> 2.0"
+
+gem 'devise-tailwinded'
+
+# Add stock gem. https://github.com/dblock/iex-ruby-client#installation
+gem 'iex-ruby-client'

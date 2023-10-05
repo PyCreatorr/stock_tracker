@@ -5,15 +5,26 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
+    
   </head>
 
   <body>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
+  <div class="min-h-full">
+  <%= render 'layouts/navbar' %>
+  <%= render 'layouts/header' %>
+  <main>
+    <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
+    <%= render "layouts/alert", obj: alert %>
+    <%= render "layouts/alert", obj: notice %>
 
     <%= yield %>
+
+        </div>
+    </main>
+    </div>
   </body>
 </html>

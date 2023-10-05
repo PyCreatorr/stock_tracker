@@ -68,6 +68,7 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.5)
       public_suffix (>= 2.0.2, < 6.0)
+    base64 (0.1.1)
     bcrypt (3.1.19)
     bindex (0.8.1)
     bootsnap (1.16.0)
@@ -94,11 +95,25 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    devise-tailwinded (0.1.5)
     erubi (1.12.0)
+    faraday (2.7.11)
+      base64
+      faraday-net_http (>= 2.0, < 3.1)
+      ruby2_keywords (>= 0.0.4)
+    faraday-multipart (1.0.4)
+      multipart-post (~> 2)
+    faraday-net_http (3.0.2)
     globalid (1.2.1)
       activesupport (>= 6.1)
+    hashie (5.0.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    iex-ruby-client (2.1.0)
+      faraday (>= 0.17)
+      faraday-multipart
+      hashie
+      money (~> 6.0)
     importmap-rails (1.2.1)
       actionpack (>= 6.0.0)
       railties (>= 6.0.0)
@@ -121,7 +136,10 @@ GEM
     method_source (1.0.0)
     mini_mime (1.1.5)
     minitest (5.20.0)
+    money (6.16.0)
+      i18n (>= 0.6.4, <= 2)
     msgpack (1.7.2)
+    multipart-post (2.3.0)
     net-imap (0.3.7)
       date
       net-protocol
@@ -179,6 +197,7 @@ GEM
       actionpack (>= 5.2)
       railties (>= 5.2)
     rexml (3.2.6)
+    ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     selenium-webdriver (4.13.1)
       rexml (~> 3.2, >= 3.2.5)
@@ -192,6 +211,8 @@ GEM
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
     stimulus-rails (1.2.2)
+      railties (>= 6.0.0)
+    tailwindcss-rails (2.0.30-x64-mingw-ucrt)
       railties (>= 6.0.0)
     thor (1.2.2)
     timeout (0.4.0)
@@ -226,6 +247,8 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  devise-tailwinded
+  iex-ruby-client
   importmap-rails
   jbuilder
   pg (~> 1.1)
@@ -234,6 +257,7 @@ DEPENDENCIES
   selenium-webdriver
   sprockets-rails
   stimulus-rails
+  tailwindcss-rails (~> 2.0)
   turbo-rails
   tzinfo-data
   web-console
