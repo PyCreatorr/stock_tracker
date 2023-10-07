@@ -15,12 +15,11 @@
   <body>
   <div class="min-h-full">
   <%= render 'layouts/navbar' %>
-  <%= render 'layouts/header' %>
+  <%= render 'layouts/header', header: "Dashboard" %>
   <main>
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-    <%= render "layouts/alert", obj: alert %>
-    <%= render "layouts/alert", obj: notice %>
-
+    <%= render "layouts/flash"%>
+ 
     <%= yield %>
 
         </div>

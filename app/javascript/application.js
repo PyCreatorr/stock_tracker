@@ -2,6 +2,10 @@
 import "@hotwired/turbo-rails"
 import "controllers"
 
+import "@fortawesome/fontawesome-free"
+
+
+
 // Initialization for ES Users
 // import { Dropdown, initTE} from "tw-elements";  
 //   initTE({ Dropdown });

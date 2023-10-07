@@ -79,3 +79,5 @@ gem 'devise-tailwinded'
 
 # Add stock gem. https://github.com/dblock/iex-ruby-client#installation
 gem 'iex-ruby-client'
+
+

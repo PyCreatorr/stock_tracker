@@ -24,7 +24,6 @@
         </div>
         <div data-controller="menu" class="hidden sm:ml-6 sm:block">
           <div class="flex space-x-4">
-            <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
             <a href="#" class="bg-gray-900 text-white rounded-md px-3 py-2 text-sm font-medium" aria-current="page">Dashboard vertical</a>
             <%# Dropdown menu%>
             <div data-action="menu#toggle" class="relative inline-block text-left">
@@ -36,9 +35,8 @@
                   </svg>
                 </button>
               
-              <div data-menu-target="toggleable" class="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+              <div data-menu-target="toggleable" class="absolute right-0 z-10000 mt-2 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                 <div class="py-1" role="none">
-                  <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
@@ -53,12 +51,12 @@
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Projects</a>
             <a href="#" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium">Calendar</a>
 
-            <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
+            <%# <div class="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
                   <form method="POST" action="#" role="none">                    
                       <input type="text" name="search" placeholder="Search" class="rounded-md border-0 pl-7 pr-20 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm mw-1">                    
                     <button type="submit" class="text-gray-300 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 " role="menuitem" tabindex="-1" id="menu-item-5">Search</button>
                   </form>
-            </div>
+            </div> %>
           </div>
         </div>
       </div>
@@ -66,7 +64,7 @@
   <!-- Mobile menu, show/hide based on menu state. -->
   <div data-menu-vertical-target="dropdownable" class="sm:hidden relative hidden" 
   id="mobile-menu">
-    <div class="mt-4 pt-3 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 fixed top-10 left-0 right-0">
+    <div class="mt-4 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 fixed top-10 left-0 right-0">
       <!-- absolute mt-2 bg-white shadow-lg origin-top-right rounded-md ring-1 ring-black ring-opacity-5 hidden -->
       <a href="#" class="bg-gray-900 text-white block rounded-md px-3 py-2 text-base font-medium text-gray-700" aria-current="page">Dashboard</a>
       <a href="#" class="text-gray-700 hover:bg-gray-700 hover:text-white block rounded-md px-3 py-2 text-base font-medium ">Team</a>
@@ -86,12 +84,12 @@
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Account settings</a>
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Support</a>
                   <a href="#" class="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">License</a>
-                  <form method="POST" action="#" role="none">
+                  <%# <form method="POST" action="#" role="none">
                     <div class="tn bzw">
                       <input type="text" name="search" id="email" class="lu tn adu afa arq axv bbn bbt bbx bcf bgd bne bnf bnr cid cif" placeholder="Search">
                     </div>
                     <button type="submit" class="inline-flex w-full justify-left gap-x-1.5 rounded-md px-3 py-2 text-gray-700 hover:bg-gray-700 hover:text-white rounded-md px-3 py-2 text-sm font-medium" role="menuitem" tabindex="-1" id="menu-item-3">search</button>
-                  </form>
+                  </form> %>
                 </div>
               </div>
             </div>
