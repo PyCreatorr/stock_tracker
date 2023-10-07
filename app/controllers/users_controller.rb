@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
   def my_data
     @stock = Stock.new
+    @user_stocks = current_user.stocks
     # binding.break
     # if(params[:stock])
 
