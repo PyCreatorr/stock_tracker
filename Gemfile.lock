@@ -107,6 +107,7 @@ GEM
     globalid (1.2.1)
       activesupport (>= 6.1)
     hashie (5.0.0)
+    hirb (0.7.3)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
     iex-ruby-client (2.1.0)
@@ -248,6 +249,7 @@ DEPENDENCIES
   debug
   devise (~> 4.9)
   devise-tailwinded
+  hirb
   iex-ruby-client
   importmap-rails
   jbuilder

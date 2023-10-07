@@ -80,4 +80,8 @@ gem 'devise-tailwinded'
 # Add stock gem. https://github.com/dblock/iex-ruby-client#installation
 gem 'iex-ruby-client'
 
+# add to see structed rails console
+# rails c Hirb.enable
+gem 'hirb'
+
 
