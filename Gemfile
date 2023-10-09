@@ -84,4 +84,6 @@ gem 'iex-ruby-client'
 # rails c Hirb.enable
 gem 'hirb'
 
+gem 'basic_yahoo_finance'
+
 

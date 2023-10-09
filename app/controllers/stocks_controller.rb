@@ -4,7 +4,8 @@ class StocksController < ApplicationController
         
             if params[:stock].present?
 
-                @stock = Stock.new_lookup(params[:stock])
+                # @stock = Stock.new_lookup(params[:stock])
+                @stock = Stock.new_lookup_yahoo(params[:stock])
 
                 if @stock
                     # render 'users/my_data'
