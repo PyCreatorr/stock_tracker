@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :user_stocks, only: [:create]
+  delete 'user_stocks', to: 'user_stocks#destroy'
   # get 'users/my_data'
   devise_for :users
   root "welcome#index"

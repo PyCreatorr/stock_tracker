@@ -13,11 +13,15 @@ class Stock < ApplicationRecord
         begin
             data = query.quotes(ticker_symbol.upcase)
 
+            if data[ticker_symbol.upcase]['shortName'].blank? && data[ticker_symbol.upcase]['regularMarketPrice']['raw'].blank?
+                return nil
+            end
+
             short_name = data[ticker_symbol.upcase]['shortName']
             price = data[ticker_symbol.upcase]['regularMarketPrice']['raw']
 
-
             return new(ticker: ticker_symbol.upcase, name: short_name, last_price: price)
+
         rescue => exception
             return nil
         end

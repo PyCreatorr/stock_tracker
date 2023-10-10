@@ -22,20 +22,23 @@
           <tbody>
 
             <% @user_stocks.each do |stock_item| %>
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        <%= stock_item.ticker%>
-                    </th>
-                    <td class="px-6 py-4">
-                        <%= stock_item.name%>
-                    </td>
-                    <td class="px-6 py-4">
-                         <%= stock_item.last_price %>
-                    </td>
-                    <td class="px-6 py-4 text-right">
-                        <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                    </td>
-                </tr>
+                
+                    <tr id="stock_item_<%= stock_item.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                            <%= stock_item.ticker%>
+                        </th>
+                        <td class="px-6 py-4">
+                            <%= stock_item.name%>
+                        </td>
+                        <td class="px-6 py-4">
+                            <%= stock_item.last_price %>
+                        </td>
+                        <td class="px-6 py-4 text-right">
+                        <%= link_to 'Delete', user_stocks_path(stock_id: stock_item.id, ticker: stock_item.ticker, user_id: current_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "px-3 py-2 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg" %>
+                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
+                        </td>
+                    </tr>
+                
             <% end %>
           </tbody>
       </table>
