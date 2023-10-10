@@ -1,4 +1,4 @@
-<div class="h-full w-full max-w-xs mx-auto align-middle">
+<div class="h-full w-full max-w-3xl mx-auto align-middle">
   <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4' }) do |f| %>
     <h2 class="text-center">Edit <%= resource_name.to_s.humanize %></h2>
     <%= render "devise/shared/error_messages", resource: resource %>
@@ -7,6 +7,16 @@
       label_classes = "block text-sm font-bold mb-2 #{alert ? "text-red-500" : "text-gray-700"}"
       input_classes = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline #{alert ? "border-red-500" : nil}"
     %>
+    <div class="grid md:grid-cols-2 md:gap-6">
+      <div class="mb-4 relative z-0 w-full mb-6 group">
+        <%= f.label :first_name, "First name", class: label_classes %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: input_classes %>
+      </div>
+      <div class="mb-4 relative z-0 w-full mb-6 group">
+        <%= f.label :last_name, "Last name", class: label_classes %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "first name", class: input_classes %>
+      </div>
+    </div>
 
     <div class="mb-4">
       <%= f.label :email, "Email", class: label_classes %>
@@ -44,7 +54,7 @@
   <% end %>
 </div>
 
-<div class="h-full w-full max-w-xs mx-auto align-middle">
+<div class="h-full w-full max-w-3xl mx-auto align-middle">
   <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
     <h3 class="text-center">Cancel my account</h3>
 

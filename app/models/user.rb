@@ -9,6 +9,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+
+  def full_name
+    return "#{first_name} #{last_name}" if (first_name.present? || last_name.present?)
+    return "Anonymos"
+  end
+
   def stock_already_tracked?(ticker_symbol)
     # check if the stock exists in the Stock table
     stock = Stock.check_db(ticker_symbol)

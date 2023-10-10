@@ -8,6 +8,17 @@
       input_classes = "shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline #{alert ? "border-red-500" : nil}"
     %>
 
+    <div class="grid md:grid-cols-2 md:gap-6">
+      <div class="mb-4 relative z-0 w-full mb-6 group">
+        <%= f.label :first_name, "First name", class: label_classes %>
+        <%= f.text_field :first_name, autofocus: true, autocomplete: "first name", class: input_classes %>
+      </div>
+      <div class="mb-4 relative z-0 w-full mb-6 group">
+        <%= f.label :last_name, "Last name", class: label_classes %>
+        <%= f.text_field :last_name, autofocus: true, autocomplete: "first name", class: input_classes %>
+      </div>
+    </div>
+
     <div class="mb-4">
       <%= f.label :email, "Email", class: label_classes %>
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: input_classes %>
