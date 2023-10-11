@@ -14,5 +14,10 @@ class UsersController < ApplicationController
     # end
   end
 
+  def my_friends
+    @friend = User.new
+    @friendships = current_user.friends
+  end
+
 
 end

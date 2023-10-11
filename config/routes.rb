@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  
+  resources :friendships, only: [:create]  
+  # post 'friendships', to: 'friendships#create'
+  delete 'friendships', to: 'friendships#destroy'
+  get 'my_friends', to: 'users#my_friends'
+  get 'search_friend', to: 'users#search'
+
   resources :user_stocks, only: [:create]
   delete 'user_stocks', to: 'user_stocks#destroy'
   # get 'users/my_data'

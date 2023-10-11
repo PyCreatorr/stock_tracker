@@ -1,0 +1,15 @@
+<div class="h-full w-full max-w-3xl mx-auto align-left max-w-7xl px-4 py-6 sm:px-2 lg:px-1">
+  <h1 class="font-bold text-4xl">Search friends</h1>
+
+<%= render partial: "users/form_friend", locals: { stock: @stock } %>
+
+<!--hier will be pasted the _results.html.erb partition & replaced for each new request -->
+  <div id="friends_data">     
+  </div>
+
+</div>
+
+   
+<%= render 'users/friends/table' %>  
+
+</div>

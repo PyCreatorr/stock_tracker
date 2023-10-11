@@ -30,6 +30,9 @@
               <div class ="<%= 'rounded-md bg-gray-900' if request.path == my_data_path %>">
                 <%= link_to 'My data', my_data_path, class: 'inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium' %>
               </div>
+              <div class ="<%= 'rounded-md bg-gray-900' if request.path == my_friends_path %>">
+                <%= link_to 'My friends', my_friends_path, class: 'inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium' %>
+              </div>
               <%# Dropdown menu%>
               <div data-action="menu#toggle" class="relative inline-block text-left <%= 'rounded-md bg-gray-900' if request.path == edit_user_registration_path %>">              
                   <button data-action="menu#toggle" type="button" class="inline-flex w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 text-sm font-medium" id="menu-button" aria-expanded="true" aria-haspopup="true">
