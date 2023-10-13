@@ -16,8 +16,52 @@ class UsersController < ApplicationController
 
   def my_friends
     @friend = User.new
-    @friendships = current_user.friends
+    @friends = current_user.friends
   end
+
+  def search
+    #binding.break
+    #render json: params[:friend]
+    #binding.break    
+
+    if !params[:friend].empty?
+
+      # @stock = Stock.new_lookup(params[:stock])
+      # strip! - removes empty signs
+      @friends = User.find_friends(params[:friend])      
+      
+      if @friends
+          # exclude current user from the friends list
+          @friends = current_user.except_current_user(@friends)
+
+              respond_to do |format|
+                  format.turbo_stream { render "users/create_friends"}
+              end
+             
+          
+      else 
+              flash.now[:danger] = "Please enter a valid symbol to search"
+              # redirect_to my_data_path
+              respond_to do |format|
+                  format.turbo_stream { render "users/create_friends"}
+              end
+              #binding.break
+              # render json: @stock
+      end
+          
+
+    else 
+              flash.now[:alert] = "You need to place a symbol!"
+              respond_to do |format|
+                  format.turbo_stream { render "users/create_friends"}
+              end
+    end
+              # redirect_to my_data_path
+
+  end
+
+
+
 
 
 end

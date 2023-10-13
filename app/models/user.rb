@@ -13,6 +13,36 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
 
+  def self.find_friends(search_item)
+    begin
+      friends = where("first_name ~* :s OR last_name ~* :s OR email ~* :s", {s: search_item })
+
+      return nil if friends.empty?
+
+      # friends = where("first_name ~* :s OR first_name ~* :s OR email ~* :s", {s: search_item})
+      return friends
+
+    rescue => exception
+        return nil
+    end
+  end
+
+  def except_current_user(users)
+    users.reject { |user| user.id == self.id }
+  end
+
+  def can_track_friend?(friend_email)
+    under_friend_limit? && friend_already_tracked?(friend_email)   
+  end
+
+  def under_friend_limit?
+    friends.count < 10
+  end
+
+  def friend_already_tracked?(friend_email)
+    friends.where(email: friend_email).empty?
+  end
+
   def full_name
     return "#{first_name} #{last_name}" if (first_name.present? || last_name.present?)
     return "Anonymos"

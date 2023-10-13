@@ -1,0 +1,17 @@
+
+<%= turbo_stream.replace "flash_message" do %>
+    <%= render partial: "layouts/flash", locals: { flash: {"alert"=> flash_notice} } %>
+<% end %>
+<%#= allowed %>
+
+<% if allowed %>
+    <%= turbo_stream.append "friends_table" do %>
+
+                    <%#= friend.email %>
+                    <%= render partial: "users/friends/row", locals: { friend: friend } %>
+
+    <% end %>
+<% end %>
+
+
+

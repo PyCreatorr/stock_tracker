@@ -9,7 +9,10 @@
 
 </div>
 
-   
-<%= render 'users/friends/table' %>  
+
+    <% if !@friends.empty? %>
+    <%= render 'users/friends/table' %>  
+    <% end %>
+
 
 </div>

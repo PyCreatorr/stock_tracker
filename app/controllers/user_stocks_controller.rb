@@ -11,9 +11,9 @@ class UserStocksController < ApplicationController
         # Check if the user already tracks this stock
         # user_stock_record = UserStock.where(user_id: current_user.id, stock_id: stock.id)
         user_stock_record = UserStock.where(user: current_user, stock: stock).first
-        if user_stock_record.blank?
-            @user_stock = UserStock.create(user: current_user, stock: stock)            
-        end
+            if user_stock_record.blank?
+                @user_stock = UserStock.create(user: current_user, stock: stock)            
+            end
             
         flash[:notice] = "The Stock #{stock.name} was successfully added to your data!"
         redirect_to my_data_path

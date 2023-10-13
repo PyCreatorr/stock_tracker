@@ -1,0 +1,23 @@
+
+ <%= turbo_stream.replace "friends_data" do %>
+
+    <%#= @friends %>
+    <% if @friends.present? && @friends.count > 0 %>    
+        <% @friends.each do |friend| %>
+            <div>
+                <%#= friend.email %>
+                <%= render partial: "users/friends/result", locals: { friend: friend } %>
+            </div>
+        <%end%>
+
+    <% else %>
+        <div id="friends_data">
+            <div id="flash_message">
+                <%= render "layouts/flash" %>
+            </div>
+        </div>
+    <%end%>
+<% end %>
+
+
+

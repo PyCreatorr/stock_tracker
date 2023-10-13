@@ -1,6 +1,6 @@
 <!-- TABLE -->
 
-<% if !@friendships.empty? %>
+<% if !@friends.empty? %>
   <div class="table-auto relative overflow-x-auto shadow-md sm:rounded-lg">
       <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
           <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -9,37 +9,39 @@
                       Email
                   </th>
                   <th scope="col" class="px-6 py-3">
-                      Name
+                      First Name
                   </th>
                   <th scope="col" class="px-6 py-3">
-                      Price
+                      Last Name
                   </th>
                   <th scope="col" class="px-6 py-3">
                       Actions
                   </th>
               </tr>
           </thead>
-          <tbody>
+          <tbody id = "friends_table">
+             
+                <% @friends.each do |friend_item| %>
+                    
+                        <tr id="friend_item_<%= friend_item.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                <%= friend_item.email%>
+                            </th>
+                            <td class="px-6 py-4">
+                                <%= friend_item.first_name%>
+                            </td>
+                            <td class="px-6 py-4">
+                                <%= friend_item.last_name %>
+                            </td>
+                            <td class="px-6 py-4 text-right">
+                            <%= link_to 'Stop following', friendships_path(friend_id: friend_item.id, email: friend_item.email, user_id: current_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "px-3 py-2 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg" %>
+                                
+                            </td>
+                        </tr>
+                    
+                <% end %>   
+                       
 
-            <% current_user.friends.each do |friend_item| %>
-                
-                    <tr id="friend_item_<%= friend_item.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            <%= friend_item.email%>
-                        </th>
-                        <td class="px-6 py-4">
-                            <%= friend_item.first_name%>
-                        </td>
-                        <td class="px-6 py-4">
-                            <%= friend_item.last_name %>
-                        </td>
-                        <td class="px-6 py-4 text-right">
-                        <%= link_to 'Stop following', friendships_path(friend_id: friend_item.id, email: friend_item.email, user_id: current_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "px-3 py-2 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg" %>
-                            
-                        </td>
-                    </tr>
-                
-            <% end %>
           </tbody>
       </table>
   </div>
