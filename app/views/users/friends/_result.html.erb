@@ -1,43 +1,44 @@
 
-  <div id="friends_data"> 
-    <div class ="w-full max-w-sm"> 
-  </div>
+  <% if friend %>      
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                <%= friend.email%>
+            </th>
+            <td class="px-6 py-4">
+                <%= friend.first_name%>
+            </td>
+            <td class="px-6 py-4">
+                <%= friend.last_name %>
+            </td>
+            <td class="px-6 py-4">
 
-  <% if friend %>
-    <div class="py-2">
-      <div>
-        <strong>Email: </strong><%= friend.email %>
-      </div>
-      <div>
-        <strong>First Name: </strong><%= friend.first_name %>
-      </div>
-      <div>
-        <strong>Last Name: </strong><%= friend.last_name %>    
-      </div>
-      
-      <% if current_user.can_track_friend?(friend.email) && current_user.email != friend.email %>
-        <div class="py-3">      
-          <%= link_to friendships_path(user: current_user, friend: friend, email: friend.email, full_name: friend.full_name), data: {turbo_method: :post}, class: "bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-2 pr-3 mr-4 mt-1 rounded-md focus:outline-none focus:shadow-outline" do %>
-              <i class="fa-solid fa-plus fa-1x" style="color: #ffffff;"></i> to My data
-          <% end %>
-        </div>
-      <% else %>
-        <span class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">
-          <% if current_user.email == friend.email %>
-                You can't track yourself
-          <% else%>
-                You are already tracking       
-                <% if current_user.friend_already_tracked?(friend.email) %>
-                  this friend
-                <% else %>
-                  <% if !current_user.under_friend_limit? %>
-                    10 stocks
+              <%= link_to friendships_path(user: current_user, friend: friend, email: friend.email, full_name: friend.full_name), data: {turbo_method: :post}, 
+              class: "mr-2 text-m font-medium text-center rounded-md text-purple-800 text-gray-900 bg-white break-keep" do %>
+                  <i class="fa-regular fa-address-card fa-2x" style="width: 20px; height:20px;"></i> 
+              <% end %>
+            
+              <% if current_user.can_track_friend?(friend.email)%>
+                  <%= link_to friendships_path(user: current_user, friend: friend, email: friend.email, full_name: friend.full_name), data: {turbo_method: :post}, 
+                  class: "px-2.5 py-1.5 text-xs font-medium text-center text-white rounded-lg bg-blue-500 hover:bg-blue-700 break-keep" do %>
+                      <i class="fa-solid fa-plus fa-1x" style="color: #ffffff;"></i> to My data
                   <% end %>
-                <% end %>
-          <% end %>
-        </span>
-      <% end %>
-    <div>
+                
+              <% else %>
+                  <span class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300 break-keep">
+                          You are already tracking       
+                          <% if current_user.friend_already_tracked?(friend.email) %>
+                            this friend
+                          <% else %>
+                            <% if !current_user.under_friend_limit? %>
+                              10 stocks
+                            <% end %>
+                          <% end %>
+                  </span>
+                
+              <% end %>
+                
+            </td>
+        </tr>
   <% end %>
-  </div>
+
 
