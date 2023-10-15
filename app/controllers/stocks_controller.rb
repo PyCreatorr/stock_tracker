@@ -11,7 +11,7 @@ class StocksController < ApplicationController
                     # render 'users/my_data'
 
                         respond_to do |format|
-                            format.turbo_stream { render "users/create"}
+                            format.turbo_stream { render "users/create_stock", locals: { stock_item: @stock }}
                         end
                             #format.turbo_stream { render 'users/create'}
                             #format.js { render partial: "users/result"}
@@ -24,7 +24,7 @@ class StocksController < ApplicationController
                         flash.now[:danger] = "Please enter a valid symbol to search"
                         # redirect_to my_data_path
                         respond_to do |format|
-                            format.turbo_stream { render "users/create"}
+                            format.turbo_stream { render "users/create_stock" , locals: { stock_item: @stock }}
                         end
                         #binding.break
                         # render json: @stock
@@ -36,7 +36,7 @@ class StocksController < ApplicationController
                     # render 'users/my_data', status: :unprocessable_entity
                     flash.now[:alert] = "You need to place a symbol!"
                     respond_to do |format|
-                        format.turbo_stream { render "users/create"}
+                        format.turbo_stream { render "users/create_stock" , locals: { stock_item: @stock }}
                     end
                     # redirect_to my_data_path
 

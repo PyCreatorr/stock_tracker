@@ -5,12 +5,22 @@
 <%#= allowed %>
 
 <% if allowed %>
-    <%= turbo_stream.append "friends_table" do %>
 
-                    <%#= friend.email %>
-                    <%= render partial: "users/friends/row", locals: { friend: friend } %>
+<%= turbo_stream.replace "friend_#{friend.id}" do %>
+    <%= render partial: "users/friends/result", locals: { friend: friend, flash: {"alert"=> flash_notice} } %>
+<% end %>
 
-    <% end %>
+<%= turbo_stream.append "friends_table" do %>
+                <%#= friend.email %>
+                <%= render partial: "users/friends/row", locals: { friend: friend } %>
+
+<% end %>
+
+<%# Update show page of the user %>
+<%= turbo_stream.replace "user_row" do %>
+    <%= render partial: "users/friends/user_row", locals: { friend: friend, flash: {"alert"=> flash_notice} } %>
+<% end %>
+
 <% end %>
 
 

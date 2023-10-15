@@ -1,0 +1,12 @@
+
+<%= turbo_stream.replace "flash_message" do %>
+    <%= render partial: "layouts/flash", locals: { flash: {"alert"=> flash_notice} } %>
+<% end %>
+
+<%= turbo_stream.replace "friend_#{friend.id}" do %>
+    <%= render partial: "users/friends/result", locals: { friend: friend, flash: {"alert"=> flash_notice} } %>
+<% end %>
+
+ <%= turbo_stream.remove user_stock_record %>
+
+

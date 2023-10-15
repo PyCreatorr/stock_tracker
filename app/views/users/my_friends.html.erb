@@ -10,8 +10,8 @@
   <div id="friends_data">     
   </div>
 
-      <% if !@friends.empty? %>
-      <%= render 'users/friends/table' %>  
-      <% end %>
+  <% if !@friends.empty? %>
+    <%= render partial: 'users/friends/table' %>  
+  <% end %>
 
 

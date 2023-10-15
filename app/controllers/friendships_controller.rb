@@ -3,8 +3,7 @@ class FriendshipsController < ApplicationController
     def create
         #binding.break
 
-        friendship = Friendship.find_by(user_id: params[:user], friend_id: params[:friend])
-        
+        friendship = Friendship.find_by(user_id: params[:user], friend_id: params[:friend])        
 
         if !friendship.nil?
             flash.now[:notice] = "The friend #{params[:full_name]} #{params[:email]} is already trackt!"  
@@ -37,6 +36,7 @@ class FriendshipsController < ApplicationController
     def destroy
         record_del = Friendship.where(friend_id: params[:friend_id], user_id: params[:user_id]).first
         record_del_data ="friend_item_#{params[:friend_id]}"
+        friend = User.find(params[:friend_id])
         # binding.break
         record_del.destroy if record_del.present?
             
@@ -44,8 +44,8 @@ class FriendshipsController < ApplicationController
         flash.now[:notice] = "#{params[:ticker]} was successfully removed from your data!"
         #binding.break
         respond_to do |format|
-            format.turbo_stream { render "users/remove", 
-                locals: {user_stock_record: record_del_data, flash_notice: "#{params[:email]} was successfully removed from your friends!" }
+            format.turbo_stream { render "users/remove_friend", 
+                locals: {user_stock_record: record_del_data, friend: friend , flash_notice: "#{params[:email]} was successfully removed from your friends!" }
             }
         end
     end

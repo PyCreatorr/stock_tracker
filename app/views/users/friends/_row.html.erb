@@ -9,6 +9,11 @@
                             <%= friend.last_name %>
                         </td>
                         <td class="px-6 py-4 text-right">
+
+                        <%= link_to user_path(friend), 
+                        class: "mr-2 text-m font-medium text-center rounded-md text-purple-800 text-gray-900 bg-white break-keep" do %>
+                            <i class="fa-regular fa-address-card fa-2x" style="width: 20px; height:20px;"></i> 
+                        <% end %>
                         <%= link_to 'Stop following', friendships_path(friend_id: friend.id, email: friend.email, user_id: current_user.id), data: {turbo_method: :delete, turbo_confirm: 'Are you sure?'}, class: "px-3 py-2 text-xs font-medium text-center text-white rounded-lg focus:ring-4 focus:outline-none focus:ring-blue-300 bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg" %>
                             
                         </td>

@@ -7,11 +7,17 @@ Rails.application.routes.draw do
   get 'search_friend', to: 'users#search'
 
   resources :user_stocks, only: [:create]
+
+  # get 'users/:id', to: 'users#show'
+
+  
   delete 'user_stocks', to: 'user_stocks#destroy'
   # get 'users/my_data'
   devise_for :users
   root "welcome#index"
-
+  
+  resources :users, only: [:show]
+  
   get 'my_data', to: 'users#my_data'
   
   get 'search_stock', to: 'stocks#search'

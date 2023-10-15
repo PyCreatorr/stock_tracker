@@ -1,0 +1,7 @@
+
+ <%= turbo_stream.replace "stock_data" do %>
+    <%= render partial: "users/result", locals: { stock_item: stock_item } %>
+<% end %>
+
+
+

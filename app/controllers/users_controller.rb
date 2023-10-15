@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   def my_data
     @stock = Stock.new
     @user_stocks = current_user.stocks
+    @user = current_user
     # binding.break
     # if(params[:stock])
 
@@ -57,6 +58,13 @@ class UsersController < ApplicationController
               end
     end
               # redirect_to my_data_path
+
+  end
+
+  def show
+      #binding.break
+      @user = User.find(params[:id])
+      @user_stocks = @user.stocks
 
   end
 

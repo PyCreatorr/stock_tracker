@@ -1,0 +1,27 @@
+
+<%= turbo_stream.replace "flash_message" do %>
+    <%= render partial: "layouts/flash", locals: { flash: {"alert"=> flash_notice} } %>
+<% end %>
+<%#= allowed %>
+
+<%# if allowed %>
+
+<%= turbo_stream.replace "stock_data" do %>
+     <%= render partial: "users/result", locals: { stock_item: stock_item, flash: {"alert"=> flash_notice} } %>
+<% end %>
+
+<%= turbo_stream.append "stocks_table" do %>
+                <%#= friend.email %>
+                <%= render partial: "users/stocks/row", locals: { stock_item: stock_item } %>
+
+<% end %>
+
+<%# Update show page of the user %>
+<%# <%= turbo_stream.replace "user_row" do %>
+<%#     <%= render partial: "users/friends/user_row", locals: { friend: friend, flash: {"alert"=> flash_notice} } %>
+<%# <% end %>
+
+<%# end %>
+
+
+

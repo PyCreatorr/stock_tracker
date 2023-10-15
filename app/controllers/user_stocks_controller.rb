@@ -16,11 +16,21 @@ class UserStocksController < ApplicationController
             end
             
         flash[:notice] = "The Stock #{stock.name} was successfully added to your data!"
-        redirect_to my_data_path
+
+        #redirect_to my_data_path
+        respond_to do |format|
+            format.turbo_stream { render "users/new_user_stock", 
+                locals: {stock_item: stock, allowed: true, flash_notice: "#{stock.name} was successfully added to your data!" }
+            }
+        end
+
+
     end
 
     def destroy 
+        stock_item = Stock.find(params[:stock_id])
         record_del = UserStock.where(stock_id: params[:stock_id], user_id: params[:user_id]).first
+
         record_del_data ="stock_item_#{params[:stock_id]}"
         # binding.break
         record_del.destroy if record_del.present?
@@ -29,8 +39,8 @@ class UserStocksController < ApplicationController
         #flash.now[:notice] = "#{params[:ticker]} was successfully removed from your data!"
         #binding.break
         respond_to do |format|
-            format.turbo_stream { render "users/remove", 
-                locals: {user_stock_record: record_del_data, flash_notice: "#{params[:ticker]} was successfully removed from your data!" }
+            format.turbo_stream { render "users/remove_stock", 
+                locals: {stock_item: stock_item, user_stock_record: record_del_data, flash_notice: "#{params[:ticker]} was successfully removed from your data!" }
             }
         end
         

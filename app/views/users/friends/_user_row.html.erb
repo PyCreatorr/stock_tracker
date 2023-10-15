@@ -1,26 +1,8 @@
-
-  <% if friend %>      
-        <tr id = "friend_<%= friend.id %>" class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-            <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                <%= friend.email%>
-            </th>
-            <td class="px-6 py-4">
-                <%= friend.first_name%>
-            </td>
-            <td class="px-6 py-4">
-                <%= friend.last_name %>
-            </td>
-            <td class="px-6 py-4">
-
-              <%= link_to user_path(friend), 
-              class: "mr-2 text-m font-medium text-center rounded-md text-purple-800 text-gray-900 bg-white break-keep" do %>
-                  <i class="fa-regular fa-address-card fa-2x" style="width: 20px; height:20px;"></i> 
-              <% end %>
-            
+            <td id="user_row" class="px-6 py-4">
               <% if current_user.can_track_friend?(friend.email)%>
                   <%= link_to friendships_path(user: current_user, friend: friend, email: friend.email, full_name: friend.full_name), data: {turbo_method: :post}, 
                   class: "px-2.5 py-1.5 text-xs font-medium text-center text-white rounded-lg bg-blue-500 hover:bg-blue-700 break-keep" do %>
-                      <i class="fa-solid fa-plus fa-1x" style="color: #ffffff;"></i> to My data
+                      <i class="fa-solid fa-plus fa-1x" style="color: #ffffff;"></i> to My friends
                   <% end %>
                 
               <% else %>
@@ -36,9 +18,4 @@
                   </span>
                 
               <% end %>
-                
             </td>
-        </tr>
-  <% end %>
-
-

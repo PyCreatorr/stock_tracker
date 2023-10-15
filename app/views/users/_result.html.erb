@@ -5,27 +5,27 @@
 
   </div>
 
-  <% if @stock %>
+  <% if stock_item %>
     <div class="py-2">
       <div>
-        <strong>Symbol: </strong><%= @stock.ticker %>
+        <strong>Symbol: </strong><%= stock_item.ticker %>
       </div>
       <div>
-        <strong>Name: </strong><%= @stock.name %>
+        <strong>Name: </strong><%= stock_item.name %>
       </div>
       <div>
-        <strong>Price: </strong><%= @stock.last_price %>    
+        <strong>Price: </strong><%= stock_item.last_price %>    
       </div>
-      <% if current_user.can_track_stock?(@stock.ticker) %>
+      <% if current_user.can_track_stock?(stock_item.ticker) %>
         <div class="py-3">      
-          <%= link_to user_stocks_path(user: current_user, ticker: @stock.ticker), data: {turbo_method: :post}, class: "bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-2 pr-3 mr-4 mt-1 rounded-md focus:outline-none focus:shadow-outline" do %>
+          <%= link_to user_stocks_path(user: current_user, ticker: stock_item.ticker), data: {turbo_method: :post}, class: "bg-blue-500 hover:bg-blue-700 text-white font-normal py-2 px-2 pr-3 mr-4 mt-1 rounded-md focus:outline-none focus:shadow-outline" do %>
               <i class="fa-solid fa-plus fa-1x" style="color: #ffffff;"></i> to My data
           <% end %>
         </div>
       <% else %>
         <span class="bg-purple-100 text-purple-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded-full dark:bg-purple-900 dark:text-purple-300">
           You are already tracking       
-        <% if current_user.stock_already_tracked?(@stock.ticker) %>
+        <% if current_user.stock_already_tracked?(stock_item.ticker) %>
           this stock
         <% else %>
           <% if !current_user.under_stock_limit? %>
